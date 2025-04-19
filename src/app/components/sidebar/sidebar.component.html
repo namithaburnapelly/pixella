@@ -1,0 +1,32 @@
+<nav
+  class="w-60 h-screen px-4 py-2 bg-gradient-to-b from-purple-200 to-indigo-200"
+>
+  <div class="w-full flex items-center justify-between p-1">
+    <div
+      class="cursor-pointer group p-[5px] rounded hover:bg-purple-300"
+      (click)="toggleSidebar()"
+    >
+      <lucide-icon
+        name="align-justify"
+        title="Sidebar"
+        class="text-blue-900 transition-all ease-in duration-75"
+      ></lucide-icon>
+    </div>
+    <div class="flex items-center gap-x-2">
+      <div class="cursor-pointer group p-[5px] rounded hover:bg-purple-300">
+        <lucide-icon
+          name="search"
+          title="Search chats"
+          class="text-blue-900 transition-all ease-in duration-75"
+        ></lucide-icon>
+      </div>
+      <div class="cursor-pointer group p-[5px] rounded hover:bg-purple-300">
+        <lucide-icon
+          name="square-pen"
+          title="New chat"
+          class="text-blue-900 transition-all ease-in duration-75"
+        ></lucide-icon>
+      </div>
+    </div>
+  </div>
+</nav>

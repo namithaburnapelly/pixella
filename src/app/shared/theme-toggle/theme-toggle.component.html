@@ -1,0 +1,14 @@
+<div class="cursor-pointer text-blue-900">
+  <!-- light mode -->
+  <lucide-icon
+    *ngIf="mode === 'light'"
+    name="sun"
+    (click)="changemode('dark')"
+  ></lucide-icon>
+  <!-- dark mode -->
+  <lucide-icon
+    *ngIf="mode === 'dark'"
+    name="moon"
+    (click)="changemode('light')"
+  ></lucide-icon>
+</div>

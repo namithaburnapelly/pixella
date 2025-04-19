@@ -1,0 +1,12 @@
+<div
+  class="cursor-pointer text-yellow-300 border-2 border-blue-900 rounded-full bg-indigo-600 w-9 h-9 flex items-center justify-center"
+>
+  <lucide-icon
+    *ngIf="user_initial === 'null'"
+    name="user-round"
+    class="w-5 h-5"
+  ></lucide-icon>
+  <span *ngIf="user_initial !== 'null'" class="font-bold text-lg">{{
+    user_initial
+  }}</span>
+</div>
