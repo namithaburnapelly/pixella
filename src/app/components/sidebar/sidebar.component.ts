@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './sidebar.component.css',
 })
 export class SidebarComponent {
-  sidebar: boolean = false;
+  sidebar: boolean = true;
 
   toggleSidebar() {
     console.log('clicked');
