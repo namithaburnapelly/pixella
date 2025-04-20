@@ -1,50 +1,121 @@
-<!-- Toggle button for sidebar -->
-<lucide-icon
-  *ngIf="isSidebarOpen === false"
-  name="align-justify"
-  title="Sidebar"
-  (click)="toggleSidebar()"
-  class="text-blue-900"
-></lucide-icon>
-
 <!-- sidebar -->
-<div
-  class="fixed top-0 left-0 h-[100dvh] w-80 bg-gradient-to-b from-purple-200 to-indigo-200 transition-all duration-300 px-4 py-3"
-  [ngClass]="{
-    'translate-x-0': isSidebarOpen,
-    '-translate-x-full': !isSidebarOpen
-  }"
->
-  <div class="w-full flex items-center justify-between p-1">
-    <div
-      class="cursor-pointer p-[5px] rounded transition-colors ease-in duration-150 hover:bg-purple-300"
-    >
-      <!-- <app-toggle-side-bar></app-toggle-side-bar> -->
-      <lucide-icon
-        name="align-justify"
-        title="Sidebar"
-        (click)="toggleSidebar()"
-        class="text-blue-900"
-      ></lucide-icon>
+<div class="flex h-full w-full">
+  <!-- for mobile view -->
+  <lucide-icon
+    name="align-justify"
+    title="Sidebar"
+    (click)="toggleSidebar()"
+    class="text-blue-900 block md:hidden lg:hidden"
+  ></lucide-icon>
+  <div
+    class="fixed top-0 left-0 md:hidden lg:hidden h-full w-[100dvw] bg-gradient-to-b from-purple-200 to-indigo-200 transition-all duration-300 px-4 py-3"
+    [ngClass]="{
+      'translate-x-0': isSidebarOpen,
+      '-translate-x-full': !isSidebarOpen
+    }"
+  >
+    <div class="h-full flex flex-col justify-between w-full">
+      <div class="w-full flex flex-col p-1">
+        <div class="w-full flex justify-between p-1">
+          <div
+            class="cursor-pointer p-[5px] rounded transition-colors ease-in duration-150 hover:bg-purple-300"
+          >
+            <lucide-icon
+              name="align-justify"
+              title="Sidebar"
+              (click)="toggleSidebar()"
+              class="text-blue-900"
+            ></lucide-icon>
+          </div>
+          <div class="flex gap-x-2" *ngIf="isSidebarOpen === true">
+            <div
+              class="cursor-pointer p-[5px] rounded transition-colors ease-in duration-150 hover:bg-purple-300"
+            >
+              <lucide-icon
+                name="search"
+                title="Search chats"
+                class="text-blue-900"
+              ></lucide-icon>
+            </div>
+            <div
+              class="cursor-pointer p-[5px] rounded transition-colors ease-in duration-150 hover:bg-purple-300"
+            >
+              <lucide-icon
+                name="square-pen"
+                title="New chat"
+                class="text-blue-900"
+              ></lucide-icon>
+            </div>
+          </div>
+        </div>
+        <app-navbar-content *ngIf="isSidebarOpen === true"></app-navbar-content>
+      </div>
     </div>
-    <div class="flex items-center gap-x-2">
-      <div
-        class="cursor-pointer p-[5px] rounded transition-colors ease-in duration-150 hover:bg-purple-300"
-      >
-        <lucide-icon
-          name="search"
-          title="Search chats"
-          class="text-blue-900"
-        ></lucide-icon>
+  </div>
+
+  <!-- for tablet and desktop view -->
+  <div
+    class="hidden md:block lg:block sticky top-0 left-0 h-full bg-gradient-to-b from-purple-200 to-indigo-200 transition-all duration-300 px-4 py-3"
+    [ngClass]="{
+      
+      'md:w-80 lg:w-80': isSidebarOpen,
+      ' md:w-20 lg:w-20': !isSidebarOpen,
+    }"
+  >
+    <div class="h-full flex flex-col justify-between w-full">
+      <div class="w-full flex flex-col p-1">
+        <div class="w-full flex justify-between p-1">
+          <div
+            class="cursor-pointer p-[5px] rounded transition-colors ease-in duration-150 hover:bg-purple-300"
+          >
+            <lucide-icon
+              name="align-justify"
+              title="Sidebar"
+              (click)="toggleSidebar()"
+              class="text-blue-900"
+            ></lucide-icon>
+          </div>
+          <div class="flex gap-x-2" *ngIf="isSidebarOpen === true">
+            <div
+              class="cursor-pointer p-[5px] rounded transition-colors ease-in duration-150 hover:bg-purple-300"
+            >
+              <lucide-icon
+                name="search"
+                title="Search chats"
+                class="text-blue-900"
+              ></lucide-icon>
+            </div>
+            <div
+              class="cursor-pointer p-[5px] rounded transition-colors ease-in duration-150 hover:bg-purple-300"
+            >
+              <lucide-icon
+                name="square-pen"
+                title="New chat"
+                class="text-blue-900"
+              ></lucide-icon>
+            </div>
+          </div>
+        </div>
+        <app-navbar-content *ngIf="isSidebarOpen === true"></app-navbar-content>
       </div>
       <div
-        class="cursor-pointer p-[5px] rounded transition-colors ease-in duration-150 hover:bg-purple-300"
+        *ngIf="isSidebarOpen === false"
+        class="flex lg:hidden flex-col items-center gap-y-4"
       >
-        <lucide-icon
-          name="square-pen"
-          title="New chat"
-          class="text-blue-900"
-        ></lucide-icon>
+        <div
+          class="cursor-pointer p-[5px] rounded transition-colors ease-in duration-150 hover:bg-indigo-300"
+        >
+          <lucide-icon
+            name="ellipsis"
+            class="cursor-pointer text-blue-900"
+          ></lucide-icon>
+        </div>
+        <div
+          class="cursor-pointer p-[5px] rounded transition-colors ease-in duration-150 hover:bg-indigo-300"
+        >
+          <app-theme-toggle></app-theme-toggle>
+        </div>
+        <app-profile></app-profile>
       </div>
     </div>
   </div>

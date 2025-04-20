@@ -13,6 +13,7 @@ import { GradientBorderComponent } from './shared/gradient-border/gradient-borde
 import { ThemeToggleComponent } from './shared/theme-toggle/theme-toggle.component';
 import { ProfileComponent } from './shared/profile/profile.component';
 import { ToggleSideBarComponent } from './shared/toggle-side-bar/toggle-side-bar.component';
+import { NavbarContentComponent } from './components/navbar-content/navbar-content.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ToggleSideBarComponent } from './shared/toggle-side-bar/toggle-side-bar
     ThemeToggleComponent,
     ProfileComponent,
     ToggleSideBarComponent,
+    NavbarContentComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, LucideIconsModule],
   providers: [],
