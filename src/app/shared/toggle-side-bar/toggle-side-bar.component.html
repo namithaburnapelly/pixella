@@ -1,6 +1,51 @@
+<!-- Toggle button for sidebar -->
 <lucide-icon
-  (click)="toggleSidebar()"
+  *ngIf="isSidebarOpen === false"
   name="align-justify"
   title="Sidebar"
+  (click)="toggleSidebar()"
   class="text-blue-900"
 ></lucide-icon>
+
+<!-- sidebar -->
+<div
+  class="fixed top-0 left-0 h-[100dvh] w-80 bg-gradient-to-b from-purple-200 to-indigo-200 transition-all duration-300 px-4 py-3"
+  [ngClass]="{
+    'translate-x-0': isSidebarOpen,
+    '-translate-x-full': !isSidebarOpen
+  }"
+>
+  <div class="w-full flex items-center justify-between p-1">
+    <div
+      class="cursor-pointer p-[5px] rounded transition-colors ease-in duration-150 hover:bg-purple-300"
+    >
+      <!-- <app-toggle-side-bar></app-toggle-side-bar> -->
+      <lucide-icon
+        name="align-justify"
+        title="Sidebar"
+        (click)="toggleSidebar()"
+        class="text-blue-900"
+      ></lucide-icon>
+    </div>
+    <div class="flex items-center gap-x-2">
+      <div
+        class="cursor-pointer p-[5px] rounded transition-colors ease-in duration-150 hover:bg-purple-300"
+      >
+        <lucide-icon
+          name="search"
+          title="Search chats"
+          class="text-blue-900"
+        ></lucide-icon>
+      </div>
+      <div
+        class="cursor-pointer p-[5px] rounded transition-colors ease-in duration-150 hover:bg-purple-300"
+      >
+        <lucide-icon
+          name="square-pen"
+          title="New chat"
+          class="text-blue-900"
+        ></lucide-icon>
+      </div>
+    </div>
+  </div>
+</div>
