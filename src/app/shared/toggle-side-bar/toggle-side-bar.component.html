@@ -8,11 +8,12 @@
 ></lucide-icon>
 
 <!-- sidebar -->
+ <!-- Remove "fixed" because if the sidebar does not expand in the same plane as the content then flex-1 will have no effect on the content width change -->
 <div
-  class="fixed top-0 left-0 h-[100dvh] w-80 bg-gradient-to-b from-purple-200 to-indigo-200 transition-all duration-300 px-4 py-3"
+  class="top-0 left-0 h-full bg-gradient-to-b from-purple-200 to-indigo-200 transition-all duration-300 px-4 py-3"
   [ngClass]="{
-    'translate-x-0': isSidebarOpen,
-    '-translate-x-full': !isSidebarOpen
+    'w-80': isSidebarOpen,
+    'w-20': !isSidebarOpen
   }"
 >
   <div class="w-full flex items-center justify-between p-1">
