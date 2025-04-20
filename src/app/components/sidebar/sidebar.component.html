@@ -1,17 +1,13 @@
 <div>
+  <!-- tablet view -->
   <div
     class="hidden md:flex w-20 lg:hidden h-[100dvh] bg-gradient-to-b from-purple-200 to-indigo-200"
   >
     <div class="w-full flex flex-col justify-between items-center my-4">
       <div
         class="cursor-pointer h-fit p-[5px] rounded transition-colors ease-in duration-150 hover:bg-purple-300"
-        (click)="toggleSidebar()"
       >
-        <lucide-icon
-          name="align-justify"
-          title="Sidebar"
-          class="text-blue-900"
-        ></lucide-icon>
+        <app-toggle-side-bar></app-toggle-side-bar>
       </div>
       <div class="flex flex-col items-center gap-y-4">
         <lucide-icon
@@ -23,19 +19,15 @@
       </div>
     </div>
   </div>
+  <!-- Desktop and large screen view -->
   <nav
     class="hidden md:hidden lg:block md:w-80 lg:80 h-screen px-4 py-2 bg-gradient-to-b from-purple-200 to-indigo-200"
   >
     <div class="w-full flex items-center justify-between p-1">
       <div
         class="cursor-pointer p-[5px] rounded transition-colors ease-in duration-150 hover:bg-purple-300"
-        (click)="toggleSidebar()"
       >
-        <lucide-icon
-          name="align-justify"
-          title="Sidebar"
-          class="text-blue-900"
-        ></lucide-icon>
+        <app-toggle-side-bar></app-toggle-side-bar>
       </div>
       <div class="flex items-center gap-x-2">
         <div

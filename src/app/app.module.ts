@@ -11,7 +11,8 @@ import { ContentComponent } from './components/content/content.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { GradientBorderComponent } from './shared/gradient-border/gradient-border.component';
 import { ThemeToggleComponent } from './shared/theme-toggle/theme-toggle.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileComponent } from './shared/profile/profile.component';
+import { ToggleSideBarComponent } from './shared/toggle-side-bar/toggle-side-bar.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     GradientBorderComponent,
     ThemeToggleComponent,
     ProfileComponent,
+    ToggleSideBarComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, LucideIconsModule],
   providers: [],

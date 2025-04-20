@@ -4,7 +4,12 @@
 
 <div class="flex flex-col">
   <div class="flex justify-between items-center">
+    <!-- Mobile view -->
+    <div class="block md:hidden lg:hidden px-4 cursor-pointer">
+      <app-toggle-side-bar></app-toggle-side-bar>
+    </div>
     <app-chatbot-icon></app-chatbot-icon>
+    <!-- tablet and desktop view -->
     <div class="hidden md:flex items-center gap-x-4 pr-6">
       <lucide-icon
         name="ellipsis-vertical"
