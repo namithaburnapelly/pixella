@@ -18,7 +18,12 @@
         class="cursor-pointer text-blue-900"
       ></lucide-icon>
       <app-theme-toggle></app-theme-toggle>
+
+      @if (user_logged_in) {
       <app-profile></app-profile>
+      } @else {
+      <app-login-button></app-login-button>
+      }
     </div>
   </div>
   <div class="h-[0.5px] w-full">

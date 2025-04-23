@@ -48,7 +48,9 @@
             </div>
           </div>
         </div>
-        <app-navbar-content *ngIf="isSidebarOpen === true"></app-navbar-content>
+        <app-sidebar-content
+          *ngIf="isSidebarOpen === true"
+        ></app-sidebar-content>
       </div>
     </div>
   </div>
@@ -96,7 +98,9 @@
             </div>
           </div>
         </div>
-        <app-navbar-content *ngIf="isSidebarOpen === true"></app-navbar-content>
+        <app-sidebar-content
+          *ngIf="isSidebarOpen === true"
+        ></app-sidebar-content>
       </div>
       <div
         *ngIf="isSidebarOpen === false"
