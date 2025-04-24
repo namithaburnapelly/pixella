@@ -17,6 +17,11 @@ import { SidebarContentComponent } from './components/sidebar_components/sidebar
 import { SignupPageComponent } from './components/Authentication/signup-page/signup-page.component';
 import { BrandNameComponent } from './shared/brand-name/brand-name.component';
 import { NewChatComponent } from './components/new-chat/new-chat.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { JWT_Module_Options } from './components/Authentication/Utils/jwt_auth';
+import { AuthService } from './Service/Authentication/auth.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -36,8 +41,15 @@ import { NewChatComponent } from './components/new-chat/new-chat.component';
     BrandNameComponent,
     NewChatComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, LucideIconsModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    LucideIconsModule,
+    JwtModule.forRoot(JWT_Module_Options),
+    FormsModule,
+    ReactiveFormsModule,
+  ],
+  providers: [AuthService, provideHttpClient()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

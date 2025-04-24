@@ -2,14 +2,11 @@ import { NgModule } from '@angular/core';
 import {
   AlignJustify,
   ArrowRight,
-  CircleUserRound,
   Ellipsis,
   EllipsisVertical,
   LogIn,
   LucideAngularModule,
   Moon,
-  PanelRightClose,
-  PanelRightOpen,
   Search,
   SquarePen,
   Sun,
@@ -20,8 +17,6 @@ import {
   imports: [
     LucideAngularModule.pick({
       Search,
-      PanelRightClose,
-      PanelRightOpen,
       SquarePen,
       AlignJustify,
       EllipsisVertical,

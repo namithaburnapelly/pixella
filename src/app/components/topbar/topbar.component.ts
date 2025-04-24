@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { AuthService } from '../../Service/Authentication/auth.service';
 
 @Component({
   selector: 'app-topbar',
@@ -6,6 +7,12 @@ import { Component } from '@angular/core';
   templateUrl: './topbar.component.html',
   styleUrl: './topbar.component.css',
 })
-export class TopbarComponent {
-  is_user_logged_in: boolean = true;
+export class TopbarComponent implements OnInit {
+  is_user_logged_in!: boolean;
+
+  private authService = inject(AuthService);
+
+  ngOnInit(): void {
+    this.is_user_logged_in = this.authService.isUserLoggedIn();
+  }
 }

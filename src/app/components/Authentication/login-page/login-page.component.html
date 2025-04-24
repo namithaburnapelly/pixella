@@ -20,6 +20,20 @@
         </a>
       </div>
     </div>
+
+    <div>
+      <form [formGroup]="loginForm" (submit)="login()">
+        <input type="text" formControlName="username" placeholder="username" />
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="password"
+        />
+        <button type="submit">Submit</button>
+      </form>
+
+      <div>{{ errorMessage }}</div>
+    </div>
   </div>
   <div class="row-span-10"></div>
 </div>

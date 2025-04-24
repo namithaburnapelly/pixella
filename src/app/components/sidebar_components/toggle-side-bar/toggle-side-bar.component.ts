@@ -1,4 +1,5 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, inject, OnInit } from '@angular/core';
+import { AuthService } from '../../../Service/Authentication/auth.service';
 
 @Component({
   selector: 'app-toggle-side-bar',
@@ -8,10 +9,12 @@ import { Component, HostListener, OnInit } from '@angular/core';
 })
 export class ToggleSideBarComponent implements OnInit {
   isSidebarOpen: boolean = false;
-  is_user_logged_in: boolean = true;
+  is_user_logged_in!: boolean;
 
+  private authService = inject(AuthService);
   ngOnInit(): void {
     this.updateSidebarState();
+    this.is_user_logged_in = this.authService.isUserLoggedIn();
   }
   @HostListener('window:resize')
   onResize() {
