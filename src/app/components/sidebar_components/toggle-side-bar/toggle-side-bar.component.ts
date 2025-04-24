@@ -14,7 +14,9 @@ export class ToggleSideBarComponent implements OnInit {
   private authService = inject(AuthService);
   ngOnInit(): void {
     this.updateSidebarState();
-    this.is_user_logged_in = this.authService.isUserLoggedIn();
+    this.authService.stateItem$.subscribe((user) => {
+      this.is_user_logged_in = !!user;
+    });
   }
   @HostListener('window:resize')
   onResize() {

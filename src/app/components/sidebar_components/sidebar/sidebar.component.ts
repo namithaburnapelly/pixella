@@ -13,6 +13,8 @@ export class SidebarComponent implements OnInit {
   private authService = inject(AuthService);
 
   ngOnInit(): void {
-    this.is_user_logged_in = this.authService.isUserLoggedIn();
+    this.authService.stateItem$.subscribe((user) => {
+      this.is_user_logged_in = !!user;
+    });
   }
 }
