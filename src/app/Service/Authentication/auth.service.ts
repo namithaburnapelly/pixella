@@ -12,6 +12,11 @@ export class AuthService {
   private login_url: string = environment.loginUrl;
   private register_url: string = environment.registerURL;
 
+  private stateItem: BehaviorSubject<Partial<User> | null> =
+    new BehaviorSubject<Partial<User> | null>(null);
+
+  stateItem$: Observable<Partial<User> | null> = this.stateItem.asObservable();
+
   private http = inject(HttpClient);
   private jwtHelper = inject(JwtHelperService);
 
@@ -32,11 +37,14 @@ export class AuthService {
   login(username: string, password: string) {
     return this.http.post<string>(this.login_url, { username, password }).pipe(
       map((response) => {
-        const user: Partial<User> = {
-          username: username,
-          accessToken: response,
-        };
-        localStorage.setItem('user', JSON.stringify(user));
+        if (response) {
+          const user: Partial<User> = {
+            username: username,
+            accessToken: response,
+          };
+          localStorage.setItem('user', JSON.stringify(user));
+          this.stateItem.next(user);
+        }
       })
     );
   }
@@ -56,6 +64,7 @@ export class AuthService {
   }
 
   logout(): void {
+    this.stateItem.next(null);
     localStorage.removeItem('user');
     console.log('logged out');
   }
