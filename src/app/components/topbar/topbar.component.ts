@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './topbar.component.css',
 })
 export class TopbarComponent {
-  user_logged_in: boolean = false;
+  is_user_logged_in: boolean = true;
 }

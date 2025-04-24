@@ -27,7 +27,9 @@
               class="text-blue-900"
             ></lucide-icon>
           </div>
-          <div class="flex gap-x-2" *ngIf="isSidebarOpen === true">
+
+          @if (isSidebarOpen) {
+          <div class="flex gap-x-2">
             <div
               class="cursor-pointer p-[5px] rounded transition-colors ease-in duration-150 hover:bg-purple-300"
             >
@@ -40,17 +42,15 @@
             <div
               class="cursor-pointer p-[5px] rounded transition-colors ease-in duration-150 hover:bg-purple-300"
             >
-              <lucide-icon
-                name="square-pen"
-                title="New chat"
-                class="text-blue-900"
-              ></lucide-icon>
+              <app-new-chat></app-new-chat>
             </div>
           </div>
+          }
         </div>
-        <app-sidebar-content
-          *ngIf="isSidebarOpen === true"
-        ></app-sidebar-content>
+
+        @if (isSidebarOpen) {
+        <app-sidebar-content></app-sidebar-content>
+        }
       </div>
     </div>
   </div>
@@ -59,7 +59,6 @@
   <div
     class="hidden md:block lg:block sticky top-0 left-0 h-full bg-gradient-to-b from-purple-200 to-indigo-200 transition-all duration-300 px-4 py-3"
     [ngClass]="{
-      
       'md:w-80 lg:w-80': isSidebarOpen,
       ' md:w-20 lg:w-20': !isSidebarOpen,
     }"
@@ -77,7 +76,9 @@
               class="text-blue-900"
             ></lucide-icon>
           </div>
-          <div class="flex gap-x-2" *ngIf="isSidebarOpen === true">
+
+          @if(isSidebarOpen){
+          <div class="flex gap-x-2">
             <div
               class="cursor-pointer p-[5px] rounded transition-colors ease-in duration-150 hover:bg-purple-300"
             >
@@ -90,37 +91,35 @@
             <div
               class="cursor-pointer p-[5px] rounded transition-colors ease-in duration-150 hover:bg-purple-300"
             >
-              <lucide-icon
-                name="square-pen"
-                title="New chat"
-                class="text-blue-900"
-              ></lucide-icon>
+              <app-new-chat></app-new-chat>
             </div>
           </div>
+          }
         </div>
-        <app-sidebar-content
-          *ngIf="isSidebarOpen === true"
-        ></app-sidebar-content>
+
+        @if (isSidebarOpen) {
+        <app-sidebar-content></app-sidebar-content>
+        }
       </div>
-      <div
-        *ngIf="isSidebarOpen === false"
-        class="flex lg:hidden flex-col items-center gap-y-4"
-      >
+
+      @if (!isSidebarOpen) {
+      <div class="flex lg:hidden flex-col items-center gap-y-4 text-blue-900">
         <div
           class="cursor-pointer p-[5px] rounded transition-colors ease-in duration-150 hover:bg-indigo-300"
         >
-          <lucide-icon
-            name="ellipsis"
-            class="cursor-pointer text-blue-900"
-          ></lucide-icon>
+          <lucide-icon name="ellipsis" class="cursor-pointer"></lucide-icon>
         </div>
         <div
           class="cursor-pointer p-[5px] rounded transition-colors ease-in duration-150 hover:bg-indigo-300"
         >
           <app-theme-toggle></app-theme-toggle>
         </div>
+
+        @if (is_user_logged_in) {
         <app-profile></app-profile>
+        }
       </div>
+      }
     </div>
   </div>
 </div>

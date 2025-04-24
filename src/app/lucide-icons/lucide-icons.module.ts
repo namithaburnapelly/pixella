@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import {
   AlignJustify,
   ArrowRight,
+  CircleUserRound,
   Ellipsis,
   EllipsisVertical,
+  LogIn,
   LucideAngularModule,
   Moon,
   PanelRightClose,
@@ -27,6 +29,7 @@ import {
       Moon,
       Ellipsis,
       ArrowRight,
+      LogIn,
     }),
   ],
   exports: [LucideAngularModule],

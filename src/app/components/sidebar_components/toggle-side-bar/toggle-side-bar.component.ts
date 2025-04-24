@@ -8,6 +8,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 })
 export class ToggleSideBarComponent implements OnInit {
   isSidebarOpen: boolean = false;
+  is_user_logged_in: boolean = true;
 
   ngOnInit(): void {
     this.updateSidebarState();
