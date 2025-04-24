@@ -13,9 +13,9 @@ import { GradientBorderComponent } from './shared/gradient-border/gradient-borde
 import { ThemeToggleComponent } from './shared/theme-toggle/theme-toggle.component';
 import { ProfileComponent } from './shared/profile/profile.component';
 import { ToggleSideBarComponent } from './components/layout/toggle-side-bar/toggle-side-bar.component';
-import { LoginButtonComponent } from './components/Authentication/login-button/login-button.component';
 import { LoginPageComponent } from './components/Authentication/login-page/login-page.component';
 import { SidebarContentComponent } from './components/layout/sidebar-content/sidebar-content.component';
+import { SignupPageComponent } from './components/Authentication/signup-page/signup-page.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +30,8 @@ import { SidebarContentComponent } from './components/layout/sidebar-content/sid
     ProfileComponent,
     ToggleSideBarComponent,
     SidebarContentComponent,
-    LoginButtonComponent,
     LoginPageComponent,
+    SignupPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, LucideIconsModule],
   providers: [],

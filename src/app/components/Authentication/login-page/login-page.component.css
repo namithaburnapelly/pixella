@@ -8,7 +8,7 @@
     /* for top right gradient effect */
       linear-gradient(-135deg, #2196f3 0%, transparent 70%),
     /* for horizontal gradient effect */
-      linear-gradient(to bottom, #e1bee7 0%, #f9f1fb 50%, #ffffff 100%);
+      linear-gradient(to bottom, #e1bee7 0%, #f7eef9 50%, #ffffff 100%);
 
   background-repeat: no-repeat, no-repeat, no-repeat;
   background-size: 50% 50%, 50% 50%, 100% 100%;
