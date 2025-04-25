@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable } from 'rxjs';
-import { User } from '../../Model/user';
+import { BehaviorSubject, catchError, map, Observable, throwError } from 'rxjs';
+import { AuthState, User } from '../../Model/user';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from '../../../environment/environment.prod';
 
@@ -12,15 +12,26 @@ export class AuthService {
   private login_url: string = environment.loginUrl;
   private register_url: string = environment.registerURL;
 
-  private stateItem: BehaviorSubject<Partial<User> | null> =
-    new BehaviorSubject<Partial<User> | null>(null);
+  private stateItem: BehaviorSubject<AuthState | null> =
+    new BehaviorSubject<AuthState | null>(null);
 
-  stateItem$: Observable<Partial<User> | null> = this.stateItem.asObservable();
+  stateItem$: Observable<AuthState | null> = this.stateItem.asObservable();
 
   private http = inject(HttpClient);
   private jwtHelper = inject(JwtHelperService);
 
-  constructor() {}
+  constructor() {
+    // get local storage when service initializes for persistent state
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      const user: AuthState = JSON.parse(storedUser);
+      if (this.jwtHelper.isTokenExpired(user.accessToken)) {
+        this.logout(); //auto logout on token expiration
+        return;
+      }
+      this.stateItem.next(user);
+    }
+  }
 
   register(
     username: string,
@@ -34,43 +45,41 @@ export class AuthService {
     });
   }
 
-  login(username: string, password: string) {
+  login(username: string, password: string): Observable<AuthState> {
     return this.http.post<string>(this.login_url, { username, password }).pipe(
-      map((response) => {
-        if (response) {
-          const user: Partial<User> = {
-            username: username,
-            accessToken: response,
-          };
-          localStorage.setItem('user', JSON.stringify(user));
-          this.stateItem.next(user);
-        }
+      map((token) => {
+        const user: AuthState = {
+          username: username,
+          accessToken: token,
+        };
+        localStorage.setItem('user', JSON.stringify(user));
+        this.stateItem.next(user);
+        return user;
+      }),
+      catchError((error) => {
+        this.logout();
+        return throwError(() => error);
       })
     );
   }
 
-  isUserLoggedIn(): boolean {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      const token = JSON.parse(storedUser).accessToken;
-      if (this.jwtHelper.isTokenExpired(token)) {
-        console.log('Token expired');
-        localStorage.removeItem('user');
-        return false;
-      }
-      return true;
-    }
-    return false;
+  isTokenExpired(token: string | null): boolean {
+    return !token || this.jwtHelper.isTokenExpired(token);
   }
 
   logout(): void {
     this.stateItem.next(null);
     localStorage.removeItem('user');
-    console.log('logged out');
   }
 
   getUsername(): string {
-    const storedUser = localStorage.getItem('user');
-    return storedUser ? JSON.parse(storedUser).username : '';
+    return this.stateItem.value?.username || '';
+  }
+
+  isUserLoggedIn(): boolean {
+    return (
+      !!this.stateItem.value?.accessToken &&
+      !this.jwtHelper.isTokenExpired(this.stateItem.value.accessToken)
+    );
   }
 }

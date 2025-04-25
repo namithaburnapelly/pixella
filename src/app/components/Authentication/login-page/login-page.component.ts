@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class LoginPageComponent {
   loginForm: FormGroup;
   errorMessage: string | null = null;
+  isLoading: boolean = false;
 
   private authService = inject(AuthService);
   private fb = inject(FormBuilder);
@@ -25,15 +26,20 @@ export class LoginPageComponent {
   }
 
   login(): void {
+    this.isLoading = true;
     if (this.loginForm.valid) {
       this.authService
         .login(this.loginForm.value.username, this.loginForm.value.password)
         .subscribe({
           next: () => {
-            this.router.navigateByUrl('/chat');
+            setTimeout(() => {
+              this.router.navigateByUrl('/chat');
+              this.isLoading = false;
+            }, 5000);
           },
           error: (err) => {
             this.errorMessage = err.message;
+            this.isLoading = false;
           },
         });
     } else {

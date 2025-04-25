@@ -5,3 +5,8 @@ export interface User {
   password: string;
   accessToken: string;
 }
+
+export interface AuthState {
+  username: string;
+  accessToken: string;
+}
