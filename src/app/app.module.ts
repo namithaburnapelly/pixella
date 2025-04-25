@@ -18,7 +18,7 @@ import { SignupPageComponent } from './components/Authentication/signup-page/sig
 import { BrandNameComponent } from './shared/brand-name/brand-name.component';
 import { NewChatComponent } from './components/new-chat/new-chat.component';
 import { JwtModule } from '@auth0/angular-jwt';
-import { JWT_Module_Options } from './components/Authentication/Utils/jwt_auth';
+import { JWT_Module_Options } from './utils/jwt_auth';
 import { AuthService } from './Service/Authentication/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
