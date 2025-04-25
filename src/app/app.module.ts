@@ -22,6 +22,7 @@ import { JWT_Module_Options } from './utils/jwt_auth';
 import { AuthService } from './Service/Authentication/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
+import { LoadingComponent } from './shared/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { provideHttpClient } from '@angular/common/http';
     SignupPageComponent,
     BrandNameComponent,
     NewChatComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,

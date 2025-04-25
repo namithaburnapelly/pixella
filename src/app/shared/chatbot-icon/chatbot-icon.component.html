@@ -1,5 +1,5 @@
 <div
-  class="animate-pulse w-full h-full bg-gray-300 rounded flex justify-center items-center"
+  class="animate-pulse w-full h-full bg-gray-300 rounded flex justify-center items-center select-none"
   *ngIf="!imageLoaded"
 >
   <!-- skeleton -->
@@ -22,7 +22,7 @@
   #imgRef
   [src]="imageUrl"
   (load)="imageLoaded = true"
-  class="w-16 h-16"
+  class="w-16 h-16 select-none"
   [class.opacity-0]="!imageLoaded"
   [class.opacity-100]="imageLoaded"
 />

@@ -5,7 +5,6 @@ import { AuthService } from '../../Service/Authentication/auth.service';
   selector: 'app-profile',
   standalone: false,
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css',
 })
 export class ProfileComponent implements OnInit {
   user_initial!: string;

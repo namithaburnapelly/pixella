@@ -1,11 +1,12 @@
-<!-- @if (isLoading) { -->
-<div class="flex justify-center items-center">
-  <div class="animate-spin"></div>
-</div>
-
-<!-- } @else { -->
 <div class="gradientbackground">
   <div class="h-full px-10 lg:px-56 grid grid-rows-12 grid-flow-col">
+    @if (isLoading) {
+    <div
+      class="fixed inset-0 z-50 flex justify-center items-center backdrop-blur-sm"
+    >
+      <app-loading></app-loading>
+    </div>
+    }
     <div class="row-span-2 flex items-center justify-between">
       <app-brand-name></app-brand-name>
       <div class="flex gap-x-2 items-center text-base">
@@ -43,4 +44,3 @@
   </div>
   <div class="row-span-10"></div>
 </div>
-<!-- } -->

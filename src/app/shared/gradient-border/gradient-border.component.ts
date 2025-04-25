@@ -4,8 +4,5 @@ import { Component } from '@angular/core';
   selector: 'app-gradient-border',
   standalone: false,
   templateUrl: './gradient-border.component.html',
-  styleUrl: './gradient-border.component.css'
 })
-export class GradientBorderComponent {
-
-}
+export class GradientBorderComponent {}

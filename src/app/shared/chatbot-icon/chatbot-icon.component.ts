@@ -4,7 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-chatbot-icon',
   standalone: false,
   templateUrl: './chatbot-icon.component.html',
-  styleUrl: './chatbot-icon.component.css',
 })
 export class ChatbotIconComponent {
   imageLoaded = false;
