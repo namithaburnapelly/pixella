@@ -7,6 +7,9 @@ const config: Config = {
       fontFamily: {
         'brand-font': ['Doto', 'sans-serif'],
       },
+      colors: {
+        'muted-foreground': 'hsl(0 0% 45.1%)',
+      },
       animation: {
         'custom-bounce': 'customBounce 1.5s infinite',
       },

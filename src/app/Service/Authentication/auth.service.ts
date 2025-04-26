@@ -49,9 +49,10 @@ export class AuthService {
     return this.http.post<string>(this.login_url, { username, password }).pipe(
       map((token) => {
         const user: AuthState = {
-          username: username,
+          username: this.decodeToken(token),
           accessToken: token,
         };
+        console.log(user);
         localStorage.setItem('user', JSON.stringify(user));
         this.stateItem.next(user);
         return user;
@@ -61,6 +62,11 @@ export class AuthService {
         return throwError(() => error);
       })
     );
+  }
+
+  decodeToken(token: string): string {
+    const decodedToken = this.jwtHelper.decodeToken(token);
+    return decodedToken?.username;
   }
 
   isTokenExpired(token: string | null): boolean {

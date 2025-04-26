@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,11 +18,12 @@ import { SignupPageComponent } from './components/Authentication/signup-page/sig
 import { BrandNameComponent } from './shared/brand-name/brand-name.component';
 import { NewChatComponent } from './components/new-chat/new-chat.component';
 import { JwtModule } from '@auth0/angular-jwt';
-import { JWT_Module_Options } from './utils/jwt_auth';
+import { JWT_Module_Options } from './utils/jwt.auth';
 import { AuthService } from './Service/Authentication/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
 import { LoadingComponent } from './shared/loading/loading.component';
+import { ErrorHandlerService } from './utils/error.handler';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,12 @@ import { LoadingComponent } from './shared/loading/loading.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [AuthService, provideHttpClient()],
+  providers: [
+    //provide custom error handler class to app module
+    { provide: ErrorHandler, useClass: ErrorHandlerService },
+    AuthService,
+    provideHttpClient(),
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

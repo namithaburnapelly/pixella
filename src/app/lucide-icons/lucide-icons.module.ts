@@ -11,6 +11,8 @@ import {
   Search,
   SquarePen,
   Sun,
+  Lock,
+  UserRound,
 } from 'lucide-angular';
 
 @NgModule({
@@ -27,6 +29,8 @@ import {
       ArrowRight,
       LogIn,
       Loader,
+      Lock,
+      UserRound,
     }),
   ],
   exports: [LucideAngularModule],

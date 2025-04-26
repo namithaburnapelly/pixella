@@ -1,5 +1,5 @@
 <div class="gradientbackground">
-  <div class="h-full px-10 lg:px-56 grid grid-rows-12 grid-flow-col">
+  <div class="h-full px-6 lg:px-36 grid grid-rows-12 grid-flow-col">
     @if (isLoading) {
     <div
       class="fixed inset-0 z-50 flex justify-center items-center backdrop-blur-sm"
@@ -7,9 +7,10 @@
       <app-loading></app-loading>
     </div>
     }
-    <div class="row-span-2 flex items-center justify-between">
+    <!-- nav container -->
+    <div class="row-span-2 flex items-center justify-between lg:px-10">
       <app-brand-name></app-brand-name>
-      <div class="flex gap-x-2 items-center text-base">
+      <div class="flex gap-x-2 items-center text-[17px]/[26px]">
         <div class="hidden md:flex lg:flex">Don't have an account?</div>
         <a
           routerLink="/signup"
@@ -28,19 +29,116 @@
       </div>
     </div>
 
-    <div>
-      <form [formGroup]="loginForm" (submit)="login()">
-        <input type="text" formControlName="username" placeholder="username" />
-        <input
-          type="password"
-          formControlName="password"
-          placeholder="password"
-        />
-        <button type="submit">Submit</button>
-      </form>
+    <div class="row-span-10 flex flex-col items-center">
+      <!-- main container -->
+      <div class="flex flex-col">
+        <!-- top container  -->
+        <div class="flex flex-col gap-y-6 w-full">
+          <div class="py-[6px] text-center text-xl text-black">
+            Log in to your account
+          </div>
+          <!-- social logins -->
+          <div
+            class="flex flex-col items-center gap-y-4 text-base font-semibold"
+          >
+            <!-- google icon -->
+            <button
+              class="flex items-center w-[360px] border-2 border-transparent hover:border-2 hover:border-[#475BC0] bg-[#ADBEF5] rounded-full shadow-xl transition-all duration-200"
+            >
+              <span class="bg-white py-[13px] px-3 rounded-l-full">
+                <img src="google-symbol.png" alt="google" class="w-5 h-5" />
+              </span>
+              <span class="ml-4">Log in with Google</span>
+            </button>
 
-      <div>{{ errorMessage }}</div>
+            <!-- github icon -->
+            <!-- hover:border-pink-500 bg-[#fd98d8] -->
+            <button
+              class="flex items-center w-[360px] border-2 border-transparent hover:border-2 hover:border-[#62636C] bg-[#B9BBC6] rounded-full shadow-xl transition-all duration-200"
+            >
+              <!-- -->
+              <span class="py-3 pl-3 pr-2 bg-white rounded-l-full">
+                <img src="github.png" alt="github" class="w-6 h-6" />
+              </span>
+              <span class="ml-4">Log in with Github</span>
+            </button>
+          </div>
+        </div>
+        <!-- middle container -->
+        <div>
+          <div class="text-sm py-4 flex justify-center text-slate-600">or</div>
+        </div>
+        <!-- bottom container -->
+        <div>
+          <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="flex flex-col items-center gap-y-4 w-[360px]">
+              <div class="w-full">
+                <input
+                  id="identifier"
+                  type="text"
+                  formControlName="identifier"
+                  placeholder="username"
+                  class="w-full py-3 rounded-md bg-[#EEF2FD] pl-5"
+                />
+              </div>
+              <div class="w-full">
+                <input
+                  id="identifier"
+                  type="text"
+                  formControlName="password"
+                  placeholder="password"
+                  class="w-full py-3 rounded-md bg-[#EEF2FD] pl-5"
+                />
+              </div>
+              <div class="text-blue-600">Forgot your password?</div>
+              <button
+                class="text-base text-white font-semibold bg-[#3F51B5] rounded-full w-full py-3 shadow-md"
+              >
+                Log In
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row-span-10"></div>
 </div>
+<!-- <form
+  [formGroup]="loginForm"
+  (ngSubmit)="login()"
+  class="flex flex-col gap-y-6"
+>
+  <div>
+    <div class="flex items-center absolute w-[360px] h-fit">
+      <lucide-icon name="user-round"></lucide-icon>
+      <input
+        id="identifier"
+        type="text"
+        formControlName="identifier"
+        placeholder="username or email"
+        class="rounded w-full bg-white focus:bg-slate-200"
+      />
+    </div>
+    <div *ngIf="identifier?.invalid && is_form_submitted">
+      *Email is required
+    </div>
+  </div>
+  <div>
+    <div class="flex items-center absolute w-[360px] h-fit">
+      <lucide-icon name="user-round"></lucide-icon>
+      <input
+        id="identifier"
+        type="text"
+        formControlName="identifier"
+        placeholder="username or email"
+        class="rounded w-full bg-white focus:bg-slate-200"
+      />
+    </div>
+    <div *ngIf="identifier?.invalid && is_form_submitted">
+      *Email is required
+    </div>
+  </div>
+  <button type="submit">Submit</button>
+</form> -->
+<!-- work on diaplying error message -->
