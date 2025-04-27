@@ -14,7 +14,7 @@ export class LoginPageComponent {
   loginForm: FormGroup;
   errorMessage: string | null = null;
   isLoading: boolean = false;
-  is_form_submitted = false;
+  is_form_submitted: boolean = false;
 
   private authService = inject(AuthService);
   private fb = inject(FormBuilder);
@@ -28,15 +28,6 @@ export class LoginPageComponent {
       identifier: ['', Validators.required],
       password: ['', Validators.required],
     });
-  }
-
-  // Methods so that html template can read loginForm fields
-  get identifier() {
-    return this.loginForm.get('identifier');
-  }
-
-  get password() {
-    return this.loginForm.get('password');
   }
 
   login(): void {
