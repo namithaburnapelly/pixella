@@ -8,13 +8,13 @@
     @if (is_user_logged_in) {
     <!-- Mobile view left component -->
     <app-toggle-side-bar
-      class="block md:hidden lg:hidden cursor-pointer py-4 pl-4"
+      class="block md:hidden lg:hidden cursor-pointer py-4 pl-4 z-50"
     ></app-toggle-side-bar>
 
     <!--  middle component -->
     <div class="flex items-center text-purple-700">
       <app-chatbot-icon></app-chatbot-icon>
-      <app-brand-name></app-brand-name>
+      <app-brand-name class="text-blue-900"></app-brand-name>
     </div>
 
     <!-- mobile view right component -->
@@ -39,12 +39,12 @@
 
     <div class="flex items-center text-purple-700">
       <app-chatbot-icon></app-chatbot-icon>
-      <app-brand-name></app-brand-name>
+      <app-brand-name class="text-blue-900"></app-brand-name>
     </div>
 
     <a
       routerLink="/login"
-      class="h-9 w-20 mr-4 text-blue-900 border-2 border-indigo-200 hover:border-none hover:bg-gradient-to-br from-purple-200 to-indigo-200 font-semibold flex justify-center items-center rounded-full cursor-pointer"
+      class="h-8 w-[74px] md:h-9 md:w-20 lg:h-9 lg:w-20 mr-4 text-blue-900 border-2 border-indigo-200 hover:border-none hover:bg-gradient-to-br from-purple-200 to-indigo-200 font-semibold flex justify-center items-center rounded-full cursor-pointer"
     >
       Log in
     </a>

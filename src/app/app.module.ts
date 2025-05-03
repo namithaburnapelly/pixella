@@ -24,6 +24,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
 import { LoadingComponent } from './shared/loading/loading.component';
 import { ErrorHandlerService } from './utils/error.handler';
+import { RequiredFieldAlertComponent } from './shared/required-field-alert/required-field-alert.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChatInputComponent } from './components/chat-input/chat-input.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,8 @@ import { ErrorHandlerService } from './utils/error.handler';
     BrandNameComponent,
     NewChatComponent,
     LoadingComponent,
+    RequiredFieldAlertComponent,
+    ChatInputComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +56,7 @@ import { ErrorHandlerService } from './utils/error.handler';
     JwtModule.forRoot(JWT_Module_Options),
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     //provide custom error handler class to app module

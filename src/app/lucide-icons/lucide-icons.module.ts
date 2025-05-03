@@ -13,7 +13,10 @@ import {
   Sun,
   UserRound,
   KeyRound,
-  CircleX,
+  CircleAlert,
+  EyeClosed,
+  Eye,
+  ArrowUp,
 } from 'lucide-angular';
 
 @NgModule({
@@ -32,7 +35,10 @@ import {
       Loader,
       UserRound,
       KeyRound,
-      CircleX,
+      CircleAlert,
+      EyeClosed,
+      Eye,
+      ArrowUp,
     }),
   ],
   exports: [LucideAngularModule],
