@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
+import { ChatInfo } from '../../../Model/message';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar-content',
@@ -6,4 +8,12 @@ import { Component } from '@angular/core';
   templateUrl: './sidebar-content.component.html',
   styleUrl: './sidebar-content.component.css',
 })
-export class SidebarContentComponent {}
+export class SidebarContentComponent {
+  @Input() chatsInfo!: ChatInfo[] | null;
+
+  private router = inject(Router);
+
+  selectChat(chatId: string) {
+    this.router.navigate(['/chat', chatId]);
+  }
+}

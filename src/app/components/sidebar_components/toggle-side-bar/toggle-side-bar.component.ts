@@ -1,5 +1,6 @@
-import { Component, HostListener, inject, OnInit } from '@angular/core';
+import { Component, HostListener, inject, Input, OnInit } from '@angular/core';
 import { AuthService } from '../../../Service/Authentication/auth.service';
+import { ChatInfo } from '../../../Model/message';
 
 @Component({
   selector: 'app-toggle-side-bar',
@@ -8,10 +9,12 @@ import { AuthService } from '../../../Service/Authentication/auth.service';
   styleUrl: './toggle-side-bar.component.css',
 })
 export class ToggleSideBarComponent implements OnInit {
+  @Input() chatsInfo!: ChatInfo[] | null;
   isSidebarOpen: boolean = false;
   is_user_logged_in!: boolean;
 
   private authService = inject(AuthService);
+
   ngOnInit(): void {
     this.updateSidebarState();
     this.authService.stateItem$.subscribe((user) => {

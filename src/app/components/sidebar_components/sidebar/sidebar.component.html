@@ -1,12 +1,8 @@
 @if (is_user_logged_in) {
 <aside class="h-full w-full">
-  <!-- tablet view -->
-  <div class="hidden md:flex lg:hidden h-full w-full">
-    <app-toggle-side-bar></app-toggle-side-bar>
-  </div>
-  <!-- desktop view -->
-  <div class="hidden md:hidden lg:block h-full w-full">
-    <app-toggle-side-bar></app-toggle-side-bar>
+  <!-- tablet & desktop view -->
+  <div class="hidden md:block h-full w-full">
+    <app-toggle-side-bar [chatsInfo]="chatsInfo"></app-toggle-side-bar>
   </div>
 </aside>
 }

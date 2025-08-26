@@ -72,7 +72,7 @@ export class LoginPageComponent {
       this.show_error = true;
       setTimeout(() => {
         this.show_error = false;
-      }, 2000);
+      }, 1000);
     }
   }
 }

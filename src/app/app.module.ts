@@ -21,12 +21,14 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { JWT_Module_Options } from './utils/jwt.auth';
 import { AuthService } from './Service/Authentication/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { LoadingComponent } from './shared/loading/loading.component';
 import { ErrorHandlerService } from './utils/error.handler';
 import { RequiredFieldAlertComponent } from './shared/required-field-alert/required-field-alert.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChatInputComponent } from './components/chat-input/chat-input.component';
+import { MessageService } from './Service/Messages/message.service';
+import { authInterceptor } from './Service/Authentication/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,8 @@ import { ChatInputComponent } from './components/chat-input/chat-input.component
     //provide custom error handler class to app module
     { provide: ErrorHandler, useClass: ErrorHandlerService },
     AuthService,
-    provideHttpClient(),
+    MessageService,
+    provideHttpClient(withInterceptors([authInterceptor])),
   ],
   bootstrap: [AppComponent],
 })

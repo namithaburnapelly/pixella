@@ -1,0 +1,3 @@
+<ul *ngFor="let chat of chatsInfo">
+  <li (click)="selectChat(chat.id)">{{ chat.title }}</li>
+</ul>

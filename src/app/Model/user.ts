@@ -1,9 +1,8 @@
 export interface User {
-  _id?: string; //handled by backend
+  userId?: string; //handled by backend
   email: string;
   username: string;
-  password: string;
-  accessToken: string;
+  token: string;
 }
 
 export interface AuthState {

@@ -1,5 +1,6 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { AuthService } from '../../Service/Authentication/auth.service';
+import { ChatInfo } from '../../Model/message';
 
 @Component({
   selector: 'app-topbar',
@@ -8,6 +9,7 @@ import { AuthService } from '../../Service/Authentication/auth.service';
   styleUrl: './topbar.component.css',
 })
 export class TopbarComponent implements OnInit {
+  @Input() chatsInfo!: ChatInfo[] | null;
   is_user_logged_in!: boolean;
 
   private authService = inject(AuthService);

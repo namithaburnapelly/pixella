@@ -4,14 +4,15 @@
 
 <div class="flex flex-col h-full">
   <div class="flex justify-between items-center h-full">
-    <!-- IF the user is logged in -->
+    <!-- If the user is logged in -->
     @if (is_user_logged_in) {
+
     <!-- Mobile view left component -->
     <app-toggle-side-bar
-      class="block md:hidden lg:hidden cursor-pointer py-4 pl-4 z-50"
+      class="block md:hidden py-4 pl-4 z-50"
+      [chatsInfo]="chatsInfo"
     ></app-toggle-side-bar>
 
-    <!--  middle component -->
     <div class="flex items-center text-purple-700">
       <app-chatbot-icon></app-chatbot-icon>
       <app-brand-name class="text-blue-900"></app-brand-name>
@@ -19,11 +20,11 @@
 
     <!-- mobile view right component -->
     <app-new-chat
-      class="block md:hidden lg:hidden cursor-pointer py-4 pr-4"
+      class="block md:hidden cursor-pointer py-4 pr-4"
     ></app-new-chat>
 
     <!-- tablet and desktop view right component-->
-    <div class="items-center hidden lg:flex md:hidden gap-x-4 pr-4">
+    <div class="items-center hidden md:flex gap-x-4 pr-4">
       <lucide-icon
         name="ellipsis-vertical"
         class="cursor-pointer text-blue-900"
@@ -44,7 +45,7 @@
 
     <a
       routerLink="/login"
-      class="h-8 w-[74px] md:h-9 md:w-20 lg:h-9 lg:w-20 mr-4 text-blue-900 border-2 border-indigo-200 hover:border-none hover:bg-gradient-to-br from-purple-200 to-indigo-200 font-semibold flex justify-center items-center rounded-full cursor-pointer"
+      class="h-8 w-[74px] md:h-9 md:w-20 mr-4 text-blue-900 border-2 border-indigo-200 hover:border-none hover:bg-gradient-to-br from-purple-200 to-indigo-200 font-semibold flex justify-center items-center rounded-full cursor-pointer"
     >
       Log in
     </a>

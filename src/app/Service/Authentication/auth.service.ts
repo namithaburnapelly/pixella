@@ -45,12 +45,13 @@ export class AuthService {
     });
   }
 
-  login(username: string, password: string): Observable<AuthState> {
-    return this.http.post<string>(this.login_url, { username, password }).pipe(
-      map((token) => {
+  login(identifier: string, password: string): Observable<AuthState> {
+    return this.http.post<User>(this.login_url, { identifier, password }).pipe(
+      map((response) => {
+        // console.log(response);
         const user: AuthState = {
-          username: this.decodeToken(token),
-          accessToken: token,
+          username: response.username,
+          accessToken: response.token,
         };
         console.log(user);
         localStorage.setItem('user', JSON.stringify(user));
@@ -64,11 +65,6 @@ export class AuthService {
     );
   }
 
-  decodeToken(token: string): string {
-    const decodedToken = this.jwtHelper.decodeToken(token);
-    return decodedToken?.username;
-  }
-
   isTokenExpired(token: string | null): boolean {
     return !token || this.jwtHelper.isTokenExpired(token);
   }
@@ -80,6 +76,10 @@ export class AuthService {
 
   getUsername(): string {
     return this.stateItem.value?.username || '';
+  }
+
+  getAccessToken(): string | null {
+    return this.stateItem.value?.accessToken || null;
   }
 
   isUserLoggedIn(): boolean {

@@ -1,6 +1,10 @@
 <main class="h-[100dvh] w-full">
   <div class="flex h-full w-full">
-    <app-sidebar></app-sidebar>
-    <app-content class="flex-1 w-full"></app-content>
+    <app-sidebar [chatsInfo]="chatsInfo"></app-sidebar>
+    <app-content
+      class="flex-1 w-full"
+      [chatId]="currentChatId"
+      [chatsInfo]="chatsInfo"
+    ></app-content>
   </div>
 </main>
