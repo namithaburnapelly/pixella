@@ -58,7 +58,7 @@ export class LoginPageComponent {
         .subscribe({
           next: () => {
             setTimeout(() => {
-              this.router.navigateByUrl('/chat');
+              this.router.navigateByUrl('/chat/new');
               this.isLoading = false;
             }, 1000);
           },

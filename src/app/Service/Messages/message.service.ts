@@ -57,7 +57,7 @@ export class MessageService {
     return this.currentChatId;
   }
 
-  // TODO : ERROR HANDLING AND LOADING
+  // TODO : ERROR HANDLING AND LOADING AND  CHECK CONSOLE.LOGS FOR THE CHATS MAP ARRAY
 
   // Temporary storage of user message, to make it lookk responsive
   private addTempUserMessge(
@@ -72,13 +72,14 @@ export class MessageService {
       chatId: chatId ?? '',
     };
 
-    const currentMessage = chatId ? this.chats.get(chatId) ?? [] : [];
-    const updatedMessages = [...currentMessage, userMessage];
     if (chatId) {
+      const currentMessage = this.chats.get(chatId) ?? [];
+      const updatedMessages = [...currentMessage, userMessage];
       this.chats.set(chatId, updatedMessages);
+      this.messageSubject.next(updatedMessages);
     }
 
-    this.messageSubject.next(updatedMessages);
+    this.messageSubject.next([userMessage]);
 
     return userMessage;
   }
