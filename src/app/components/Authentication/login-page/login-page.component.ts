@@ -60,7 +60,7 @@ export class LoginPageComponent {
             setTimeout(() => {
               this.router.navigateByUrl('/chat/new');
               this.isLoading = false;
-            }, 1000);
+            }, 500);
           },
           error: (err) => {
             this.errorMessage = this.errorHandler.handleError(err);
@@ -72,7 +72,7 @@ export class LoginPageComponent {
       this.show_error = true;
       setTimeout(() => {
         this.show_error = false;
-      }, 1000);
+      }, 500);
     }
   }
 }

@@ -50,7 +50,7 @@ export class AuthService {
       map((response) => {
         // console.log(response);
         const user: AuthState = {
-          username: response.username,
+          username: response.user.username,
           accessToken: response.token,
         };
         console.log(user);

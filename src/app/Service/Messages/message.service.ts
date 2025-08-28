@@ -77,9 +77,9 @@ export class MessageService {
       const updatedMessages = [...currentMessage, userMessage];
       this.chats.set(chatId, updatedMessages);
       this.messageSubject.next(updatedMessages);
+    } else {
+      this.messageSubject.next([userMessage]);
     }
-
-    this.messageSubject.next([userMessage]);
 
     return userMessage;
   }

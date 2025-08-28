@@ -1,4 +1,4 @@
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule, SecurityContext } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChatInputComponent } from './components/chat-input/chat-input.component';
 import { MessageService } from './Service/Messages/message.service';
 import { authInterceptor } from './Service/Authentication/auth.interceptor';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,9 @@ import { authInterceptor } from './Service/Authentication/auth.interceptor';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    MarkdownModule.forRoot({
+      sanitize: SecurityContext.NONE,
+    }),
   ],
   providers: [
     //provide custom error handler class to app module

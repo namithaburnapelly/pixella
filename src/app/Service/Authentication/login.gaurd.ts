@@ -1,15 +1,13 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { AuthService } from '../Service/Authentication/auth.service';
+import { AuthService } from './auth.service';
 
-export const AuthGaurd: CanActivateFn = () => {
+export const LoginGaurd: CanActivateFn = () => {
   const authService = inject(AuthService);
   const router = inject(Router);
 
   if (authService.isUserLoggedIn()) {
-    router.navigate(['/chat']);
-    return false;
+    return router.parseUrl('/chat/new');
   }
   return true;
 };
-// not really using it now its see

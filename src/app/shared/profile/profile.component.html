@@ -11,3 +11,13 @@
     user_initial | uppercase
   }}</span>
 </div>
+@if (isLoading) {
+<div
+  class="fixed inset-0 z-50 flex justify-center items-center backdrop-blur-sm"
+>
+  <img #imgRef [src]="chatbot_small_url" class="w-14 h-14 select-none" />
+  <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+    : See you soon, Take care!
+  </p>
+</div>
+}

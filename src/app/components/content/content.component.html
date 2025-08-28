@@ -1,24 +1,27 @@
 <div class="flex flex-col h-[100dvh] w-full">
   <app-topbar class="h-16" [chatsInfo]="chatsInfo"></app-topbar>
-  <div class="grid grid-rows-12 grow pt-2 w-full">
-    <div class="row-span-10 overflow-y-auto justify-center flex">
-      <div class="h-96 px-4 md:max-w-[750px]">
+  <div class="grid grid-rows-12 grow pt-[4px] w-full">
+    <div class="row-span-10 overflow-y-auto justify-center flex pt-3 w-full">
+      <div
+        class="h-96 px-4 w-full md:max-w-[750px] flex flex-col justify-start"
+        *ngIf="messages$ | async as messages"
+      >
         <!-- messages are viewed here -->
-        <div *ngIf="messages$ | async as messages">
-          <div *ngFor="let msg of messages">
-            <div *ngIf="msg.role === 'user'" class="flex justify-end">
-              <div class="bg-blue-500 text-white p-2 rounded-2xl max-w-[70%]">
-                {{ msg.content }}
+        <div *ngFor="let msg of messages" class="w-full">
+          <div class="flex justify-end pb-1">
+            <div *ngIf="msg.role === 'user'">
+              <div class="px-3 py-2 bg-indigo-200 rounded-xl rounded-tr-sm">
+                <h5>
+                  {{ msg.content }}
+                </h5>
               </div>
             </div>
+          </div>
 
-            <!-- Assistant messages -->
-            <div *ngIf="msg.role === 'model'" class="flex justify-start">
-              <div
-                class="bg-gray-200 text-gray-900 p-2 rounded-2xl max-w-[70%]"
-              >
-                {{ msg.content }}
-              </div>
+          <!-- Assistant messages -->
+          <div *ngIf="msg.role === 'model'" class="w-full pb-2">
+            <div class="px-3.5 py-2 justify-start items-center">
+              <markdown [data]="msg.content.join('\n')"></markdown>
             </div>
           </div>
         </div>

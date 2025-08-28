@@ -1,8 +1,12 @@
 export interface User {
-  userId?: string; //handled by backend
+  user: UserDetails;
+  token: string;
+}
+
+export interface UserDetails {
+  id?: string;
   email: string;
   username: string;
-  token: string;
 }
 
 export interface AuthState {
