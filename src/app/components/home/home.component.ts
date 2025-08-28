@@ -30,3 +30,6 @@ export class HomeComponent implements OnInit {
     });
   }
 }
+
+// loading side bar content here is just rendering things again n again for no reason -------------
+//when on chat and we go back the chat is not going, it should show new chat in this case

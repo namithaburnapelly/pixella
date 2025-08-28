@@ -26,6 +26,6 @@ export class ProfileComponent implements OnInit {
       this.authService.logout();
       this.router.navigate(['/login']);
       this.isLoading = false;
-    }, 500);
+    }, 5000);
   }
 }
